@@ -1,0 +1,11 @@
+/*Authentication */
+
+export const AUTH_SIGNUP = 'AUTH_SIGNUP';
+export const AUTH_SIGNUP_SUCCESS = 'AUTH_SIGNUP_SUCCESS';
+export const AUTH_SIGNUP_FAILURE = 'AUTH_SIGNUP_FAILURE';
+
+//SignIn
+
+export const AUTH_SIGNIN = 'AUTH_SIGNIN';
+export const AUTH_SIGNIN_SUCCESS = 'AUTH_SIGNIN_SUCCESS';
+export const AUTH_SIGNIN_FAILURE = 'AUTH_SIGNIN_FAILURE';

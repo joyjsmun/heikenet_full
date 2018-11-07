@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import 'styles/SignIn.scss';
+import './SignIn.scss';
 import  {Link,NavLink,Redirect} from 'react-router-dom';
 import {Image} from 'react-bootstrap';
 import axios from 'axios';
@@ -40,33 +40,35 @@ class SignIn extends Component {
         console.log('The form was submitted with the following data:');
         console.log(this.state);
 
-        axios.post('https://heike-net.herokuapp.com/api/v1/login',{
-            name:this.state.email,
+        axios.post('https://heikenet-backend.herokuapp.com/api/v1/login',{
+            email:this.state.email,
             password:this.state.password,
             
             
         }).then(function (res) {
             console.log(res);
             
-            if(res.data === 'ok'){
+            if(res.status === 200){
                 console.log("login success");
+                return <Redirect to='/dashboard'/>
                 
             }
           })
           .catch(function (error) {
             console.log(error);
             console.log('unauthorized, logging out ...');
+            
           })
 
           
     }
 
     render() {
-        const { redirect } = this.state;
+    //     const { redirect } = this.state;
 
-     if (redirect) {
-       return <Redirect to='/userinfo'/>;
-     }
+    //  if (redirect) {
+    //    return <Redirect to='/dashboard'/>;
+    //  }
 
         return (
             
@@ -98,7 +100,7 @@ class SignIn extends Component {
                                  <div className="FormField">
                                     <button className="FormField__Button mr-20" type="submit">Sign In</button>
                                     <div>
-                                    <Link to="/signup_form" className="FormField__Link" >Create an account</Link> 
+                                    <Link to="/signup" className="FormField__Link" >Create an account</Link> 
                                     </div>
                                 </div>
                             </form>
